@@ -1,49 +1,65 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
 import {
     CButton,
     CCollapse,
     CContainer,
-    CForm,
     CFormInput,
     CNavbarToggler,
     CNavItem,
-    CNavLink,
     CNavbar,
     CNavbarBrand,
     CNavbarNav
-} from '@coreui/react'
-import PropTypes from 'prop-types'
+} from "@coreui/react"
+import { Link } from "react-router-dom"
+import PropTypes from "prop-types"
 
-import './UserSearchNavBar.css'
+import Pagination from "./Pagination/Pagination"
+
+import "./UserSearchNavBar.css"
+
 
 const UserSearchNavBar = props => {
 
-    const { handleInput, username } = props
+    const {
+        fetchMore,
+        handleInput,
+        paginationSettings,
+        repositories,
+        showPagination,
+        username
+    } = props
+
     const [visible, setVisible] = useState(false)
 
     return (
         <>
-            <CNavbar expand="sm" colorScheme="light" className="bg-light">
+            <CNavbar expand="md" colorScheme="light" className="bg-light pt-0">
                 <CContainer fluid>
                     <CNavbarBrand href="#">Repo Manager</CNavbarBrand>
                     <CNavbarToggler onClick={() => setVisible(!visible)} />
                     <CCollapse className="navbar-collapse" visible={visible}>
-                        {/* <CNavbarNav>
+                        <CNavbarNav className="navigation-bar">
                             <CNavItem>
-                                <CNavLink href="#" active>
-                                    Home
-                                </CNavLink>
+                                <CFormInput
+                                    type="search"
+                                    className="me-2"
+                                    placeholder="Search"
+                                    value={username}
+                                    onChange={e => handleInput(e.target.value)}
+                                />
                             </CNavItem>
-                        </CNavbarNav> */}
-                        <CNavbarNav>
-                            <CNavItem>
-                                <CForm className="d-flex">
-                                    <CFormInput type="search" className="me-2" placeholder="Search" value={username} onChange={e => handleInput(e.target.value)}/>
-                                    <CButton type="submit" color="success" variant="outline">
-                                        Search
-                                    </CButton>
-                                </CForm>
-                            </CNavItem>
+                            {
+                                showPagination &&
+                                <CNavItem>
+                                    <Pagination fetchMore={fetchMore} paginationSettings={paginationSettings} />
+                                </CNavItem>
+                            }
+                            {
+                                repositories &&
+                                <CNavItem>
+                                    <CButton color="primary"><Link to="/create-repository">Create New Repository</Link></CButton>
+                                </CNavItem>
+                            }
                         </CNavbarNav>
                     </CCollapse>
                 </CContainer>
@@ -52,6 +68,11 @@ const UserSearchNavBar = props => {
     )
 }
 
-UserSearchNavBar.propTypes = {}
+UserSearchNavBar.propTypes = {
+    // repositories: PropTypes.array,
+    // setErrorMessage: PropTypes.func.isRequired,
+    // setLoading: PropTypes.func.isRequired,
+    // setRepositories: PropTypes.func.isRequired
+}
 
 export default UserSearchNavBar

@@ -1,3 +1,18 @@
-.navbar-collapse {
+.navbar-brand, .navbar-toggler {
     margin-top: .5rem;
+}
+
+.navigation-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-item {
+    margin-top: .5rem;
+}
+
+button > a {
+    color: rgba(255, 255, 255, 0.87);
+    text-decoration: none;
 }

@@ -1,0 +1,15 @@
+.spinner-container {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.table-row {
+    cursor: pointer;
+}
+
+.table-row:hover * {
+    color: #1e1383;
+    background-color: #d6d2f8;
+    border-color: #c2bcf4;
+}

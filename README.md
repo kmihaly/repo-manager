@@ -1,6 +1,12 @@
 # REPO-MANAGER
 This is a repository manager. You can view the details of the repository of a chosen GitHub user, even to add a new one.
 
+## Short Installation Guide
+1. Clone
+2. Have Node installed (14+)
+3. In terminal run 'npm i'
+4. In terminal run 'npm start'
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
