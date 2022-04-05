@@ -1,12 +1,10 @@
-import React from 'react'
+import React from "react"
+import Loading from "../../../components/Loading/Loading"
 
-import {
-    CAlert,
-    CSpinner
-} from '@coreui/react'
-import PropTypes from 'prop-types'
+import { CAlert } from "@coreui/react"
+import PropTypes from "prop-types"
 
-import RepositoryTable from './RepositoryTable.js'
+import RepositoryTable from "./RepositoryTable.js"
 
 import "./Repositories.css"
 
@@ -27,11 +25,7 @@ const Repositories = props => {
     }
 
     if (loading) {
-        return (
-            <div className='spinner-container'>
-                <CSpinner className='d-block' color="info" />
-            </div>
-        )
+        return (<Loading />)
     }
 
     if (!repositories) {

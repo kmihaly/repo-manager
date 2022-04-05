@@ -1,4 +1,4 @@
-import { gql, useMutation  } from '@apollo/client'
+import { gql } from '@apollo/client'
 
 const createRepositoryQuery = username => {
 
@@ -35,6 +35,7 @@ const createRepositoryQuery = username => {
                         cursor
                     }
                 }
+                id
             }      
         }
     `
@@ -42,15 +43,20 @@ const createRepositoryQuery = username => {
     return REPOSITORIES_QUERY
 }
 
-const createRepository = async (input) => {
+const createRepositoryMutation = () => {
+    
     const REPOSITORY_MUTATION = gql`
-        mutation {
-            createRepository(input: ${input}) {
-
+        mutation createRepository($input: CreateRepositoryInput!) {
+            createRepository(input: $input) {
+                repository
+                {
+                    name
+                    createdAt
+                }
             }
         }
     `
     return REPOSITORY_MUTATION
 }
 
-export { createRepositoryQuery }
+export { createRepositoryMutation, createRepositoryQuery }

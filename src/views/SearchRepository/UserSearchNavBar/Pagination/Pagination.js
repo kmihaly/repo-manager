@@ -5,7 +5,7 @@ import {
 } from '@coreui/react'
 import PropTypes from 'prop-types'
 
-import { HITS_PER_PAGE } from '../../../appSettings'
+import { HITS_PER_PAGE } from '../../../../appSettings'
 
 import "./Pagination.css"
 
@@ -41,9 +41,9 @@ const Pagination = ({ fetchMore, paginationSettings }) => {
 }
 
 Pagination.propTypes = {
+    fetchMore: PropTypes.func,
     paginationSettings: PropTypes.shape({
         endCursor: PropTypes.string,
-        totalCount: PropTypes.number,
         startCursor: PropTypes.string,
         hasNextPage: PropTypes.bool,
         hasPreviousPage: PropTypes.bool

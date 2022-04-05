@@ -17,7 +17,6 @@ import Pagination from "./Pagination/Pagination"
 
 import "./UserSearchNavBar.css"
 
-
 const UserSearchNavBar = props => {
 
     const {
@@ -69,10 +68,17 @@ const UserSearchNavBar = props => {
 }
 
 UserSearchNavBar.propTypes = {
-    // repositories: PropTypes.array,
-    // setErrorMessage: PropTypes.func.isRequired,
-    // setLoading: PropTypes.func.isRequired,
-    // setRepositories: PropTypes.func.isRequired
+    fetchMore: PropTypes.func.isRequired,
+    handleInput: PropTypes.func.isRequired,
+    paginationSettings: PropTypes.shape({
+        endCursor: PropTypes.string,
+        startCursor: PropTypes.string,
+        hasNextPage: PropTypes.bool,
+        hasPreviousPage: PropTypes.bool
+    }),
+    repositories: PropTypes.array,
+    showPagination: PropTypes.bool,
+    username: PropTypes.string
 }
 
 export default UserSearchNavBar
